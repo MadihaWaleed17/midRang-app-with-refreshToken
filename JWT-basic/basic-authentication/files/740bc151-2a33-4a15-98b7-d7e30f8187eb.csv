@@ -1,0 +1,2 @@
+GroupId,GroupName,VpcId,Description,OwnerId,InboundRulesCount,OutboundRulesCount,Tags
+sg-027aa1c5cf3a5f1b6,JWT-basic-sg,vpc-07e645403be554172,"ssh,http,https",258083582828,4,1,

@@ -44,4 +44,19 @@ typeScript
     "exclude": ["node_modules"]
 }
 12. npm i nodemon
+
+13. ---------------------------------- ui premiuim react --------------------
+14. design a premium quality 
+
+ui must be responsive
+
+Always console from value on submit 
+cleanest code pattern 
+do not use custom css
+always use tailwind
+every time give full code of component 
+from now design only given component
+
+
+
  

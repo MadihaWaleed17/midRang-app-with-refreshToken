@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { href, Link, Outlet } from "react-router-dom";
+import { href, Link, Outlet , useNavigate} from "react-router-dom";
 import { httpInterceptor } from "./lib/httpInterceptor";
 import { useAuth } from "../context/Authprovider";
 import useSWR from 'swr'
@@ -12,6 +12,7 @@ const Layout = () => {
     const {data, error, isLoading} = useSWR('/auth/refreshToken', Fetcher, {refreshInterval:EightMinutMs, shouldRetryOnError:false})
     const [showProfile, setShowProfile] = useState(true);
     const [profile, setProfile] = useState(null)
+    const navigate = useNavigate()
 
 
 
@@ -20,10 +21,7 @@ const Layout = () => {
         fetchPicture()
     }, [])
 
-    const logout = () => {
-
-        location.href = "/login"
-    }
+    
 
     const handleProfile = () => {
         try {
@@ -73,7 +71,11 @@ const Layout = () => {
         }
     }
 
+const logout =async()=>{
+   await httpInterceptor.post('/auth/logout')
+   navigate('/login')
 
+}
 
 
     return (

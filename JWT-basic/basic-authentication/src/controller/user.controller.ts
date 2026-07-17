@@ -146,3 +146,24 @@ export const getSession = async (req: Request, res: Response)=>{
 }
 }
 
+export const logout =(req:Request, res:Response)=>{
+try{
+    const option ={
+         httpOnly: true,
+        maxAge: 0,
+        secure: false,
+        domain: 'localhost'
+    }
+
+        res.clearCookie('accessToken', option)
+        res.clearCookie('refreshToken', option)
+
+        res.json({message:"Logout successfully"})
+}
+
+     catch (err) {
+        if (err instanceof Error) {
+            res.status(500).json({ message: err.message })
+        }}
+}
+

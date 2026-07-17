@@ -7,7 +7,7 @@ import Fetcher from "./lib/fetcher";
 const EightMinutMs= (8*60*60)*1000
 
 const Layout = () => {
-    const { userInfo } = useAuth()
+    const { userInfo,setUserInfo } = useAuth()
     const [isOpen, setIsOpen] = useState(false);
     const {data, error, isLoading} = useSWR('/auth/refreshToken', Fetcher, {refreshInterval:EightMinutMs, shouldRetryOnError:false})
     const [showProfile, setShowProfile] = useState(true);
@@ -73,6 +73,7 @@ const Layout = () => {
 
 const logout =async()=>{
    await httpInterceptor.post('/auth/logout')
+   setUserInfo(null)
    navigate('/login')
 
 }

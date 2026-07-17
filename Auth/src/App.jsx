@@ -5,7 +5,7 @@ import Layout from "./component/Layout";
 import Dashboard from "./component/app/Dashboad";
 import File from "./component/app/File";
 import History from "./component/app/History";
-import { AuthProvider, ProtectedRoute } from "./context/Authprovider";
+import { AuthProvider, ProtectedRoute, RedirectRoute } from "./context/Authprovider";
 
 
 
@@ -14,8 +14,10 @@ function App() {
     <AuthProvider>
       <BrowserRouter>
         <Routes>
+          <Route element={<RedirectRoute />}>
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
+          </Route>
           <Route element={<ProtectedRoute />}>
           <Route path="/dashboard" element={<Layout />} >
             <Route index element={<Dashboard />} />
